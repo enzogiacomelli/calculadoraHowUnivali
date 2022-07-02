@@ -68,43 +68,76 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void separaNumeros(String operacao){
-        //operacao = "5 + 6";
+        //operacao = "5 + 6"; //teste
         String apenasNumeros;
         apenasNumeros = operacao.replaceAll("[^0-9]", " ");
         String partes[];
         partes = apenasNumeros.split(" ");
 
         num1 = Double.parseDouble(partes[0]);
-        //num2 = Double.parseDouble(partes[1]); //por algum motivo quebra o app quando atribiu o valor
+        num2 = Double.parseDouble(partes[3]);
 
         resultadoText.setText(partes[0]);
+        switch (operador){
+            case 1:
+                resultadoText.setText(resultadoText.getText() + " + ");
+                break;
+
+            case 2:
+                resultadoText.setText(resultadoText.getText() + " - ");
+                break;
+
+            case 3:
+                resultadoText.setText(resultadoText.getText() + " / ");
+                break;
+
+            case 4:
+                resultadoText.setText(resultadoText.getText() + " * ");
+                break;
+        }
+        resultadoText.setText(resultadoText.getText() + partes[3]);
+
     }
 
 
 
     public void clickLimparBtn(View view){
-        operacaoText.setText("0");
+        operacaoText.setText("");
+        resultadoText.setText("");
     }
 
     public void clickIgualBtn(View view){
         separaNumeros(operacaoText.getText().toString());
-        /*switch (operador){
+        resultadoText.setText(resultadoText.getText() + " = ");
+        String resultado;
+        switch (operador){
             case 1:
-
+                resultado = operacoes.soma(num1, num2);
+                operacaoText.setText(resultado);
+                resultadoText.setText(resultadoText.getText() + resultado);
                 break;
-
             case 2:
-
+                resultado = operacoes.subtracao(num1, num2);
+                operacaoText.setText(resultado);
+                resultadoText.setText(resultadoText.getText() + resultado);
                 break;
 
             case 3:
-
+                resultado = operacoes.divisao(num1, num2);
+                operacaoText.setText(resultado);
+                resultadoText.setText(resultadoText.getText() + resultado);
                 break;
 
             case 4:
-
+                resultado = operacoes.multiplicacao(num1, num2);
+                operacaoText.setText(resultado);
+                resultadoText.setText(resultadoText.getText() + resultado);
                 break;
-        }*/
+        }
+    }
+
+    public void clickPontoBtn(){
+        operacaoText.setText(operacaoText.getText() + ".");
     }
 
     public void clickSomaBtn(View view){

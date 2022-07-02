@@ -1,35 +1,38 @@
 package com.HoW.calculadora3;
 
 
+
+
 public class operacoes {
 
-    public static String soma(String a, String b)
+    public static String soma(Double numero1, Double numero2)
     {
-        String numero1String = "2";//testes
-        String numero2String = "1";
-
-        double numero1 = Double.parseDouble(numero1String);
-        double numero2 = Double.parseDouble(numero2String);
         double resultado = numero1 + numero2;
 
         return String.valueOf(resultado);
     }
 
 
-    public static String subtracao()
+    public static String subtracao(Double numero1, Double numero2)
     {
-        return "";
+        double resultado = numero1 - numero2;
+
+        return String.valueOf(resultado);
     }
 
 
-    public static String multiplicacao()
+    public static String multiplicacao(Double numero1, Double numero2)
     {
-        return "";
+        double resultado = numero1 * numero2;
+
+        return String.valueOf(resultado);
     }
 
 
-    public static String divisao()
+    public static String divisao(Double numero1, Double numero2)
     {
-        return "";
+        double resultado = numero1 / numero2;
+
+        return String.valueOf(resultado);
     }
 }
