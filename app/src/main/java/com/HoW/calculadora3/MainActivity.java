@@ -6,6 +6,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     Button num7Btn;
     Button num8Btn;
     Button num9Btn;
-
+    List<String> saveData = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         vincularComponentes();
 
         operacoes Operacoes = new operacoes();
+        salvarDados salvarDados = new salvarDados();
     }
 
     private void vincularComponentes()
@@ -96,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         resultadoText.setText(resultadoText.getText() + partes[3]);
-
     }
 
 
@@ -134,9 +136,12 @@ public class MainActivity extends AppCompatActivity {
                 resultadoText.setText(resultadoText.getText() + resultado);
                 break;
         }
+        saveData.add(resultadoText.getText().toString());
+        salvarDados.criarArquivo();
+        salvarDados.editarArquivo();
     }
 
-    public void clickPontoBtn(){
+    public void clickPontoBtn(View view){
         operacaoText.setText(operacaoText.getText() + ".");
     }
 
@@ -163,51 +168,41 @@ public class MainActivity extends AppCompatActivity {
 
     public void click0btn(View view) {
         operacaoText.append("0");
-        //verificaNumero("0");
     }
 
     public void click1btn(View view) {
         operacaoText.append("1");
-        //verificaNumero("1");
     }
 
     public void click2btn(View view) {
         operacaoText.append("2");
-        //verificaNumero("2");
     }
 
     public void click3btn(View view) {
         operacaoText.append("3");
-        //verificaNumero("3");
     }
 
     public void click4btn(View view) {
         operacaoText.append("4");
-        //verificaNumero("4");
     }
 
     public void click5btn(View view) {
         operacaoText.append("5");
-        //verificaNumero("5");
     }
 
     public void click6btn(View view) {
         operacaoText.append("6");
-       // verificaNumero("6");
     }
 
     public void click7btn(View view) {
         operacaoText.append("7");
-       // verificaNumero("7");
     }
 
     public void click8btn(View view) {
         operacaoText.append("8");
-        //verificaNumero("8");
     }
 
     public void click9btn(View view) {
         operacaoText.append("9");
-        //verificaNumero("9");
     }
 }
