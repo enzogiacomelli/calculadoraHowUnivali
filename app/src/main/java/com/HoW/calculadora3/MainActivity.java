@@ -11,7 +11,7 @@ import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    //declarações
     EditText resultadoText;
     EditText operacaoText;
     double num1 = 0;
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         salvarDados salvarDados = new salvarDados();
     }
 
-    private void vincularComponentes()
+    private void vincularComponentes()//identifica os elementos da interface com as variaveis
     {
         resultadoText = findViewById(R.id.resultadoTxt);
         operacaoText = findViewById(R.id.operacaoTxt);
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         num2 = 0;
         operador = 0;
         decimal = false;
-    }
+    }//botao para "resetar" a calculadora
 
     public void clickIgualBtn(View view){
 
@@ -88,57 +88,67 @@ public class MainActivity extends AppCompatActivity {
             case 1:
                 resultado = operacoes.soma(num1, num2);
                 operacaoText.setText(resultado);
-                resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "+" + String.valueOf(num1) + " = " + resultado);
+                resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "+" + String.valueOf(num2) + " = " + resultado + " ");
                 break;
             case 2:
                 resultado = operacoes.subtracao(num1, num2);
                 operacaoText.setText(resultado);
-                resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "-" + String.valueOf(num1) + " = " + resultado);
+                resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "-" + String.valueOf(num2) + " = " + resultado + " ");
                 break;
 
             case 3:
                 resultado = operacoes.divisao(num1, num2);
                 operacaoText.setText(resultado);
-                resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "/" + String.valueOf(num1) + " = " + resultado);
+                resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "/" + String.valueOf(num2) + " = " + resultado + " ");
                 break;
 
             case 4:
                 resultado = operacoes.multiplicacao(num1, num2);
                 operacaoText.setText(resultado);
-                resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "*" + String.valueOf(num1) + " = " + resultado);
+                resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "*" + String.valueOf(num2) + " = " + resultado + " ");
                 break;
+
+            default:
+                return;
         }
 
-        num1 = Double.parseDouble(resultado);
+        num1 = Double.parseDouble(resultado);//define o resultado como o primeiro valor da proxima operação e limpa o resto.
         num2 = 0;
         operador = 5;
         decimal = false;
-
     }
 
     public void clickPontoBtn(View view){
-        operacaoText.setText(operacaoText.getText() + ".");
-        decimal = true;
+        if(!decimal) {
+            operacaoText.setText(operacaoText.getText() + ".");
+            decimal = true;
+        }else{
+            return;
+        }
     }
 
     public void clickSomaBtn(View view){
         operacaoText.setText(operacaoText.getText() + " + ");
         operador = 1;
+        decimal = false;
     }
 
     public void clickSubtracaoBtn(View view){
         operacaoText.setText(operacaoText.getText() + " - ");
         operador = 2;
+        decimal = false;
     }
 
     public void clickDivisaoBtn(View view){
         operacaoText.setText(operacaoText.getText() + " / ");
         operador = 3;
+        decimal = false;
     }
 
     public void clickMultiplicaoBtn(View view){
         operacaoText.setText(operacaoText.getText() + " * ");
         operador = 4;
+        decimal = false;
     }
 
 
@@ -156,8 +166,8 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 num2 += 0.0;
             }
+            decimal = false;
         }
-        decimal = false;
     }
 
     public void click1btn(View view) {
@@ -174,8 +184,8 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 num2 += 0.1;
             }
+            decimal = false;
         }
-        decimal = false;
     }
 
     public void click2btn(View view) {
@@ -192,8 +202,8 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 num2 += 0.2;
             }
+            decimal = false;
         }
-        decimal = false;
     }
 
 
@@ -211,8 +221,8 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 num2 += 0.3;
             }
+            decimal = false;
         }
-        decimal = false;
     }
 
 
@@ -230,8 +240,9 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 num2 += 0.4;
             }
+            decimal = false;
         }
-        decimal = false;
+
     }
 
     public void click5btn(View view) {
@@ -248,8 +259,9 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 num2 += 0.5;
             }
+            decimal = false;
         }
-        decimal = false;
+
     }
 
     public void click6btn(View view) {
@@ -266,8 +278,8 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 num2 += 0.6;
             }
+            decimal = false;
         }
-        decimal = false;
     }
 
     public void click7btn(View view) {
@@ -284,8 +296,8 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 num2 += 0.7;
             }
+            decimal = false;
         }
-        decimal = false;
     }
 
     public void click8btn(View view) {
@@ -302,8 +314,8 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 num2 += 0.8;
             }
+            decimal = false;
         }
-        decimal = false;
     }
 
     public void click9btn(View view) {
@@ -320,7 +332,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 num2 += 0.9;
             }
+            decimal = false;
         }
-        decimal = false;
     }
 }
