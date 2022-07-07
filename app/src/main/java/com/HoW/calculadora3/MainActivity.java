@@ -93,19 +93,19 @@ public class MainActivity extends AppCompatActivity {
             case 2:
                 resultado = operacoes.subtracao(num1, num2);
                 operacaoText.setText(resultado);
-                resultadoText.setText(resultadoText.getText() + resultado);
+                resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "-" + String.valueOf(num1) + " = " + resultado);
                 break;
 
             case 3:
                 resultado = operacoes.divisao(num1, num2);
                 operacaoText.setText(resultado);
-                resultadoText.setText(resultadoText.getText() + resultado);
+                resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "/" + String.valueOf(num1) + " = " + resultado);
                 break;
 
             case 4:
                 resultado = operacoes.multiplicacao(num1, num2);
                 operacaoText.setText(resultado);
-                resultadoText.setText(resultadoText.getText() + resultado);
+                resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "*" + String.valueOf(num1) + " = " + resultado);
                 break;
         }
 
