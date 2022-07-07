@@ -6,6 +6,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -14,9 +16,8 @@ public class MainActivity extends AppCompatActivity {
     EditText operacaoText;
     double num1 = 0;
     double num2 = 0;
-    //String decimal1 = "";
-    //String decimal2 = "";
     byte operador = 0;
+    boolean decimal = false;
     Button adicaoBtn;
     Button subtracaoBtn;
     Button multiplicacaoBtn;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     Button num7Btn;
     Button num8Btn;
     Button num9Btn;
-
+    List<String> saveData = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         vincularComponentes();
 
         operacoes Operacoes = new operacoes();
+        salvarDados salvarDados = new salvarDados();
     }
 
     private void vincularComponentes()
@@ -67,54 +69,26 @@ public class MainActivity extends AppCompatActivity {
         num9Btn = findViewById(R.id.num9Btn);
     }
 
-    public void separaNumeros(String operacao){
-        //operacao = "5 + 6"; //teste
-        String apenasNumeros;
-        apenasNumeros = operacao.replaceAll("[^0-9]", " ");
-        String partes[];
-        partes = apenasNumeros.split(" ");
-
-        num1 = Double.parseDouble(partes[0]);
-        num2 = Double.parseDouble(partes[3]);
-
-        resultadoText.setText(partes[0]);
-        switch (operador){
-            case 1:
-                resultadoText.setText(resultadoText.getText() + " + ");
-                break;
-
-            case 2:
-                resultadoText.setText(resultadoText.getText() + " - ");
-                break;
-
-            case 3:
-                resultadoText.setText(resultadoText.getText() + " / ");
-                break;
-
-            case 4:
-                resultadoText.setText(resultadoText.getText() + " * ");
-                break;
-        }
-        resultadoText.setText(resultadoText.getText() + partes[3]);
-
-    }
 
 
 
     public void clickLimparBtn(View view){
         operacaoText.setText("");
         resultadoText.setText("");
+        num1 = 0;
+        num2 = 0;
+        operador = 0;
+        decimal = false;
     }
 
     public void clickIgualBtn(View view){
-        separaNumeros(operacaoText.getText().toString());
-        resultadoText.setText(resultadoText.getText() + " = ");
-        String resultado;
+
+        String resultado = "";
         switch (operador){
             case 1:
                 resultado = operacoes.soma(num1, num2);
                 operacaoText.setText(resultado);
-                resultadoText.setText(resultadoText.getText() + resultado);
+                resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "+" + String.valueOf(num1) + " = " + resultado);
                 break;
             case 2:
                 resultado = operacoes.subtracao(num1, num2);
@@ -134,10 +108,17 @@ public class MainActivity extends AppCompatActivity {
                 resultadoText.setText(resultadoText.getText() + resultado);
                 break;
         }
+
+        num1 = Double.parseDouble(resultado);
+        num2 = 0;
+        operador = 5;
+        decimal = false;
+
     }
 
-    public void clickPontoBtn(){
+    public void clickPontoBtn(View view){
         operacaoText.setText(operacaoText.getText() + ".");
+        decimal = true;
     }
 
     public void clickSomaBtn(View view){
@@ -163,51 +144,183 @@ public class MainActivity extends AppCompatActivity {
 
     public void click0btn(View view) {
         operacaoText.append("0");
-        //verificaNumero("0");
+        if (!decimal) {
+            if (operador == 0) {
+                num1 = 0.0;
+            } else {
+                num2 = 0.0;
+            }
+        } else {
+            if (operador == 0) {
+                num1 += 0.0;
+            } else {
+                num2 += 0.0;
+            }
+        }
+        decimal = false;
     }
 
     public void click1btn(View view) {
         operacaoText.append("1");
-        //verificaNumero("1");
+        if (!decimal) {
+            if (operador == 0) {
+                num1 = 1.0;
+            } else {
+                num2 = 1.0;
+            }
+        } else {
+            if (operador == 0) {
+                num1 += 0.1;
+            } else {
+                num2 += 0.1;
+            }
+        }
+        decimal = false;
     }
 
     public void click2btn(View view) {
         operacaoText.append("2");
-        //verificaNumero("2");
+        if (!decimal) {
+            if (operador == 0) {
+                num1 = 2.0;
+            } else {
+                num2 = 2.0;
+            }
+        } else {
+            if (operador == 0) {
+                num1 += 0.2;
+            } else {
+                num2 += 0.2;
+            }
+        }
+        decimal = false;
     }
+
 
     public void click3btn(View view) {
         operacaoText.append("3");
-        //verificaNumero("3");
+        if (!decimal) {
+            if (operador == 0) {
+                num1 = 3.0;
+            } else {
+                num2 = 3.0;
+            }
+        } else {
+            if (operador == 0) {
+                num1 += 0.3;
+            } else {
+                num2 += 0.3;
+            }
+        }
+        decimal = false;
     }
+
 
     public void click4btn(View view) {
         operacaoText.append("4");
-        //verificaNumero("4");
+        if (!decimal) {
+            if (operador == 0) {
+                num1 = 4.0;
+            } else {
+                num2 = 4.0;
+            }
+        } else {
+            if (operador == 0) {
+                num1 += 0.4;
+            } else {
+                num2 += 0.4;
+            }
+        }
+        decimal = false;
     }
 
     public void click5btn(View view) {
         operacaoText.append("5");
-        //verificaNumero("5");
+        if (!decimal) {
+            if (operador == 0) {
+                num1 = 5.0;
+            } else {
+                num2 = 5.0;
+            }
+        } else {
+            if (operador == 0) {
+                num1 += 0.5;
+            } else {
+                num2 += 0.5;
+            }
+        }
+        decimal = false;
     }
 
     public void click6btn(View view) {
         operacaoText.append("6");
-       // verificaNumero("6");
+        if (!decimal) {
+            if (operador == 0) {
+                num1 = 6.0;
+            } else {
+                num2 = 6.0;
+            }
+        } else {
+            if (operador == 0) {
+                num1 += 0.6;
+            } else {
+                num2 += 0.6;
+            }
+        }
+        decimal = false;
     }
 
     public void click7btn(View view) {
         operacaoText.append("7");
-       // verificaNumero("7");
+        if (!decimal) {
+            if (operador == 0) {
+                num1 = 7.0;
+            } else {
+                num2 = 7.0;
+            }
+        } else {
+            if (operador == 0) {
+                num1 += 0.7;
+            } else {
+                num2 += 0.7;
+            }
+        }
+        decimal = false;
     }
 
     public void click8btn(View view) {
         operacaoText.append("8");
-        //verificaNumero("8");
+        if (!decimal) {
+            if (operador == 0) {
+                num1 = 8.0;
+            } else {
+                num2 = 8.0;
+            }
+        } else {
+            if (operador == 0) {
+                num1 += 0.8;
+            } else {
+                num2 += 0.8;
+            }
+        }
+        decimal = false;
     }
 
     public void click9btn(View view) {
         operacaoText.append("9");
-        //verificaNumero("9");
+        if (!decimal) {
+            if (operador == 0) {
+                num1 = 9.0;
+            } else {
+                num2 = 9.0;
+            }
+        } else {
+            if (operador == 0) {
+                num1 += 0.9;
+            } else {
+                num2 += 0.9;
+            }
+        }
+        decimal = false;
     }
 }
