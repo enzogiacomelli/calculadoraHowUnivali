@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.teste);
+        setContentView(R.layout.main_activity);
 
         vincularComponentes();
 
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
     }//botao para "resetar" a calculadora
 
     public void clickIgualBtn(View view){
-
+        resultadoText.setText("");
         String resultado = "";
         switch (operador){
             case 1:
@@ -242,7 +242,6 @@ public class MainActivity extends AppCompatActivity {
             }
             decimal = false;
         }
-
     }
 
     public void click5btn(View view) {
@@ -261,7 +260,6 @@ public class MainActivity extends AppCompatActivity {
             }
             decimal = false;
         }
-
     }
 
     public void click6btn(View view) {
