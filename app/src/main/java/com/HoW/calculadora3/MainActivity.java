@@ -1,5 +1,6 @@
 package com.HoW.calculadora3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -45,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
 
         operacoes Operacoes = new operacoes();
         salvarDados salvarDados = new salvarDados();
+    }
+
+    protected void abrirHistorico(View view){
+        Intent intent = new Intent(this, historico.class);
+        startActivity(intent);
     }
 
     private void vincularComponentes()//identifica os elementos da interface com as variaveis

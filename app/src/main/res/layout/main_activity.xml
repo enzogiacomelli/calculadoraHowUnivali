@@ -246,4 +246,17 @@
 
     </TableRow>
 
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/historicoBtn"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:text="Histórico"
+            android:onClick="abrirHistorico"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+    </TableRow>
+
 </TableLayout>
