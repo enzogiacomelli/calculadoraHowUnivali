@@ -21,7 +21,9 @@
             android:focusable="false"
             android:enabled="false"
             android:gravity="right|center_vertical"
+            android:paddingEnd="20dp"
             android:inputType="numberDecimal"
+            android:textStyle="bold"
             android:text="0" >
 
         </EditText>
@@ -46,6 +48,8 @@
             android:enabled="false"
             android:gravity="right|center_vertical"
             android:inputType="numberDecimal"
+            android:paddingEnd="20dp"
+            android:textStyle="bold"
             android:text="0" >
 
         </EditText>
@@ -65,7 +69,10 @@
             android:layout_weight="1"
             android:layout_column="0"
             android:onClick="click7btn"
-            android:text="7" />
+            android:text="7"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="1dp"/>
 
         <Button
             android:id="@+id/num8Btn"
@@ -74,7 +81,10 @@
             android:layout_column="1"
             android:layout_weight="1"
             android:onClick="click8btn"
-            android:text="8" />
+            android:text="8"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="1dp"/>
 
         <Button
             android:id="@+id/num9Btn"
@@ -83,6 +93,9 @@
             android:layout_column="2"
             android:layout_weight="1"
             android:onClick="click9btn"
+            android:layout_marginEnd="1dp"
+            android:textSize="18dp"
+            android:textStyle="bold"
             android:text="9" />
 
         <Button
@@ -92,6 +105,8 @@
             android:layout_column="3"
             android:layout_weight="1"
             android:onClick="clickDivisaoBtn"
+            android:textSize="18dp"
+            android:textStyle="bold"
             android:text="/" />
 
     </TableRow>
@@ -109,7 +124,10 @@
             android:layout_column="0"
             android:layout_weight="1"
             android:onClick="click4btn"
-            android:text="4" />
+            android:text="4"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="1dp"/>
 
         <Button
             android:id="@+id/num5Btn"
@@ -118,7 +136,10 @@
             android:layout_column="1"
             android:layout_weight="1"
             android:onClick="click5btn"
-            android:text="5" />
+            android:text="5"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="1dp" />
 
         <Button
             android:id="@+id/num6Btn"
@@ -127,7 +148,10 @@
             android:layout_column="2"
             android:layout_weight="1"
             android:onClick="click6btn"
-            android:text="6" />
+            android:text="6"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="1dp" />
 
         <Button
             android:id="@+id/multiplicacaoBtn"
@@ -136,6 +160,8 @@
             android:layout_column="3"
             android:layout_weight="1"
             android:onClick="clickMultiplicaoBtn"
+            android:textSize="18dp"
+            android:textStyle="bold"
             android:text="*" />
 
     </TableRow>
@@ -153,7 +179,10 @@
             android:layout_column="0"
             android:layout_weight="1"
             android:onClick="click1btn"
-            android:text="1" />
+            android:text="1"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="1dp" />
 
         <Button
             android:id="@+id/num2Btn"
@@ -162,7 +191,10 @@
             android:layout_column="1"
             android:layout_weight="1"
             android:onClick="click2btn"
-            android:text="2" />
+            android:text="2"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="1dp" />
 
         <Button
             android:id="@+id/num3Btn"
@@ -171,7 +203,10 @@
             android:layout_column="2"
             android:layout_weight="1"
             android:onClick="click3btn"
-            android:text="3" />
+            android:text="3"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="1dp" />
 
         <Button
             android:id="@+id/subtracaoBtn"
@@ -180,7 +215,10 @@
             android:layout_column="3"
             android:layout_weight="1"
             android:onClick="clickSubtracaoBtn"
-            android:text="-" />
+            android:text="-"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="1dp" />
 
     </TableRow>
 
@@ -197,7 +235,10 @@
             android:layout_column="0"
             android:layout_weight="1"
             android:onClick="clickPontoBtn"
-            android:text="." />
+            android:text="."
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="1dp" />
 
         <Button
             android:id="@+id/num0Btn"
@@ -206,7 +247,10 @@
             android:layout_column="1"
             android:layout_weight="1"
             android:onClick="click0btn"
-            android:text="0" />
+            android:text="0"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="1dp" />
 
         <Button
             android:id="@+id/igualBtn"
@@ -215,7 +259,10 @@
             android:layout_column="2"
             android:layout_weight="1"
             android:onClick="clickIgualBtn"
-            android:text="=" />
+            android:text="="
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="1dp" />
 
         <Button
             android:id="@+id/somaBtn"
@@ -224,7 +271,10 @@
             android:layout_column="3"
             android:layout_weight="1"
             android:onClick="clickSomaBtn"
-            android:text="+" />
+            android:text="+"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="1dp" />
 
     </TableRow>
 
@@ -239,10 +289,26 @@
             android:layout_width="wrap_content"
             android:layout_height="70dp"
             android:layout_column="0"
-            android:layout_span="2"
+            android:layout_span="3"
             android:layout_weight="1"
             android:onClick="clickLimparBtn"
-            android:text="limpar" />
+            android:text="limpar"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="1dp"/>
+
+
+        <Button
+            android:id="@+id/historicoBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_column="1"
+            android:layout_weight="1"
+            android:onClick="activity_historico"
+            android:fontFamily="@font/font_awesome"
+            android:text="\uf1da"
+            android:textSize="18dp"
+            android:textColor="@color/white" />
 
     </TableRow>
 

@@ -1,5 +1,6 @@
 package com.HoW.calculadora3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -34,7 +35,10 @@ public class MainActivity extends AppCompatActivity {
     Button num7Btn;
     Button num8Btn;
     Button num9Btn;
+    Button historicoBtn;
     List<String> saveData = new ArrayList<String>();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,15 @@ public class MainActivity extends AppCompatActivity {
 
         operacoes Operacoes = new operacoes();
         salvarDados salvarDados = new salvarDados();
+
+
+        historicoBtn.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, HistoricoActivity.class);
+                startActivity(intent);
+            }
+        }));
     }
 
     private void vincularComponentes()//identifica os elementos da interface com as variaveis
@@ -67,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         num7Btn = findViewById(R.id.num7Btn);
         num8Btn = findViewById(R.id.num8Btn);
         num9Btn = findViewById(R.id.num9Btn);
+        historicoBtn = findViewById(R.id.historicoBtn);
     }
 
 
@@ -333,4 +347,7 @@ public class MainActivity extends AppCompatActivity {
             decimal = false;
         }
     }
+
+
+
 }
