@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     Button num8Btn;
     Button num9Btn;
     Button historicoBtn;
-    List<String> saveData = new ArrayList<String>();
+    public static List<String> saveData = new ArrayList<>();
 
 
 
@@ -103,23 +103,27 @@ public class MainActivity extends AppCompatActivity {
                 resultado = operacoes.soma(num1, num2);
                 operacaoText.setText(resultado);
                 resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "+" + String.valueOf(num2) + " = " + resultado + " ");
+                saveData.add(resultadoText.getText().toString());
                 break;
             case 2:
                 resultado = operacoes.subtracao(num1, num2);
                 operacaoText.setText(resultado);
                 resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "-" + String.valueOf(num2) + " = " + resultado + " ");
+                saveData.add(resultadoText.getText().toString());
                 break;
 
             case 3:
                 resultado = operacoes.divisao(num1, num2);
                 operacaoText.setText(resultado);
                 resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "/" + String.valueOf(num2) + " = " + resultado + " ");
+                saveData.add(resultadoText.getText().toString());
                 break;
 
             case 4:
                 resultado = operacoes.multiplicacao(num1, num2);
                 operacaoText.setText(resultado);
                 resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "*" + String.valueOf(num2) + " = " + resultado + " ");
+                saveData.add(resultadoText.getText().toString());
                 break;
 
             default:
@@ -347,7 +351,4 @@ public class MainActivity extends AppCompatActivity {
             decimal = false;
         }
     }
-
-
-
 }
