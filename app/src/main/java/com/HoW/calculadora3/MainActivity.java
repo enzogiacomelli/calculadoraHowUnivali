@@ -174,9 +174,20 @@ public class MainActivity extends AppCompatActivity {
         operacaoText.append("0");
         if (!decimal) {
             if (operador == 0) {
-                num1 = 0.0;
+                if(num1 == 0)
+                {
+                    num1 = 0.0;
+                }else{
+                    num1 = num1 * 10 + 0;
+                }
+
             } else {
-                num2 = 0.0;
+                if(num2 == 0)
+                {
+                    num2 = 1.0;
+                }else{
+                    num2 = num2 * 10 + 0;
+                }
             }
         } else {
             if (operador == 0) {
@@ -192,9 +203,20 @@ public class MainActivity extends AppCompatActivity {
         operacaoText.append("1");
         if (!decimal) {
             if (operador == 0) {
-                num1 = 1.0;
+                if(num1 == 0)
+                {
+                    num1 = 1.0;
+                }else{
+                    num1 = num1 * 10 + 1;
+                }
+
             } else {
-                num2 = 1.0;
+                if(num2 == 0)
+                {
+                    num2 = 1.0;
+                }else{
+                    num2 = num2 * 10 + 1;
+                }
             }
         } else {
             if (operador == 0) {
@@ -210,9 +232,20 @@ public class MainActivity extends AppCompatActivity {
         operacaoText.append("2");
         if (!decimal) {
             if (operador == 0) {
-                num1 = 2.0;
+                if(num1 == 0)
+                {
+                    num1 = 2.0;
+                }else{
+                    num1 = num1 * 10 + 2;
+                }
+
             } else {
-                num2 = 2.0;
+                if(num2 == 0)
+                {
+                    num2 = 2.0;
+                }else{
+                    num2 = num2 * 10 + 2;
+                }
             }
         } else {
             if (operador == 0) {
@@ -224,14 +257,24 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     public void click3btn(View view) {
         operacaoText.append("3");
         if (!decimal) {
             if (operador == 0) {
-                num1 = 3.0;
+                if(num1 == 0)
+                {
+                    num1 = 3.0;
+                }else{
+                    num1 = num1 * 10 + 3;
+                }
+
             } else {
-                num2 = 3.0;
+                if(num2 == 0)
+                {
+                    num2 = 3.0;
+                }else{
+                    num2 = num2 * 10 + 3;
+                }
             }
         } else {
             if (operador == 0) {
@@ -243,14 +286,24 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     public void click4btn(View view) {
         operacaoText.append("4");
         if (!decimal) {
             if (operador == 0) {
-                num1 = 4.0;
+                if(num1 == 0)
+                {
+                    num1 = 4.0;
+                }else{
+                    num1 = num1 * 10 + 4;
+                }
+
             } else {
-                num2 = 4.0;
+                if(num2 == 0)
+                {
+                    num2 = 4.0;
+                }else{
+                    num2 = num2 * 10 + 4;
+                }
             }
         } else {
             if (operador == 0) {
@@ -266,9 +319,20 @@ public class MainActivity extends AppCompatActivity {
         operacaoText.append("5");
         if (!decimal) {
             if (operador == 0) {
-                num1 = 5.0;
+                if(num1 == 0)
+                {
+                    num1 = 5.0;
+                }else{
+                    num1 = num1 * 10 + 5;
+                }
+
             } else {
-                num2 = 5.0;
+                if(num2 == 0)
+                {
+                    num2 = 5.0;
+                }else{
+                    num2 = num2 * 10 + 5;
+                }
             }
         } else {
             if (operador == 0) {
@@ -284,9 +348,20 @@ public class MainActivity extends AppCompatActivity {
         operacaoText.append("6");
         if (!decimal) {
             if (operador == 0) {
-                num1 = 6.0;
+                if(num1 == 0)
+                {
+                    num1 = 6.0;
+                }else{
+                    num1 = num1 * 10 + 6;
+                }
+
             } else {
-                num2 = 6.0;
+                if(num2 == 0)
+                {
+                    num2 = 6.0;
+                }else{
+                    num2 = num2 * 10 + 6;
+                }
             }
         } else {
             if (operador == 0) {
@@ -302,9 +377,20 @@ public class MainActivity extends AppCompatActivity {
         operacaoText.append("7");
         if (!decimal) {
             if (operador == 0) {
-                num1 = 7.0;
+                if(num1 == 0)
+                {
+                    num1 = 7.0;
+                }else{
+                    num1 = num1 * 10 + 7;
+                }
+
             } else {
-                num2 = 7.0;
+                if(num2 == 0)
+                {
+                    num2 = 7.0;
+                }else{
+                    num2 = num2 * 10 + 7;
+                }
             }
         } else {
             if (operador == 0) {
@@ -320,9 +406,20 @@ public class MainActivity extends AppCompatActivity {
         operacaoText.append("8");
         if (!decimal) {
             if (operador == 0) {
-                num1 = 8.0;
+                if(num1 == 0)
+                {
+                    num1 = 8.0;
+                }else{
+                    num1 = num1 * 10 + 8;
+                }
+
             } else {
-                num2 = 8.0;
+                if(num2 == 0)
+                {
+                    num2 = 8.0;
+                }else{
+                    num2 = num2 * 10 + 8;
+                }
             }
         } else {
             if (operador == 0) {
@@ -338,9 +435,20 @@ public class MainActivity extends AppCompatActivity {
         operacaoText.append("9");
         if (!decimal) {
             if (operador == 0) {
-                num1 = 9.0;
+                if(num1 == 0)
+                {
+                    num1 = 9.0;
+                }else{
+                    num1 = num1 * 10 + 9;
+                }
+
             } else {
-                num2 = 9.0;
+                if(num2 == 0)
+                {
+                    num2 = 9.0;
+                }else{
+                    num2 = num2 * 10 + 9;
+                }
             }
         } else {
             if (operador == 0) {
