@@ -6,26 +6,26 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.HoW.calculadora3.calculadoraModel;
+import com.HoW.calculadora3.ResultadoModel;
 
 import java.util.List;
 
 @androidx.room.Dao
-public interface resultadoDao {
+public interface ResultadoDao {
     //Resultado
     @Insert
-    void insertResultado(calculadoraModel model);
+    void insertResultado(ResultadoModel model);
 
     @Update
-    void updateResultado(calculadoraModel model);
+    void updateResultado(ResultadoModel model);
 
     @Delete
-    void deleteResultado(calculadoraModel model);
+    void deleteResultado(ResultadoModel model);
 
     @Query("DELETE FROM tbResultados")
-    void deleteTodosResultado();
+    void deleteTodosResultados();
 
     @Query("SELECT * FROM tbResultados ORDER BY CORESULTADO ASC")
-    LiveData<List<calculadoraModel>> getTodosResultados();
+    LiveData<List<ResultadoModel>> getTodosResultados();
 
 }

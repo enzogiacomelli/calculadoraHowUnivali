@@ -2,9 +2,12 @@ package com.HoW.calculadora3;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -38,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
     Button historicoBtn;
     public static List<String> saveData = new ArrayList<>();
 
+
+    // criando constantes para as variaveis
+    public static final String EXTRA_COD_RESULTADO = "com.gtappdevelopers.gfroomdatabase.EXTRA_COD_RESULTADO";
+    public static final String EXTRA_DE_RESULTADO = "com.gtappdevelopers.gfroomdatabase.EXTRA_DE_RESULTADO";
 
 
     @Override
@@ -83,9 +90,20 @@ public class MainActivity extends AppCompatActivity {
         historicoBtn = findViewById(R.id.historicoBtn);
     }
 
-    private void salvarDB(String operacao){
+    //metodo para salvar os dados recebidos da activity
+    private void salvarDB(String deResultado){
+        // passando os dados via intent
+        Intent dados = new Intent();
+        // detalhes do resultado
+        dados.putExtra(EXTRA_DE_RESULTADO, deResultado);
+        int co_resultado = getIntent().getIntExtra(EXTRA_COD_RESULTADO, -1);
+        if(co_resultado != -1){
+            dados.putExtra(EXTRA_COD_RESULTADO,co_resultado);
+        }
+        setResult(RESULT_OK,dados);
 
-
+        // retorna mensagem de confirmacao
+        Toast.makeText(this, deResultado.toString(), Toast.LENGTH_SHORT).show();
     }
 
 
@@ -107,27 +125,31 @@ public class MainActivity extends AppCompatActivity {
                 resultado = operacoes.soma(num1, num2);
                 operacaoText.setText(resultado);
                 resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "+" + String.valueOf(num2) + " = " + resultado + " ");
-                saveData.add(resultadoText.getText().toString());
+                //saveData.add(resultadoText.getText().toString());
+                salvarDB(resultadoText.getText().toString());
                 break;
             case 2:
                 resultado = operacoes.subtracao(num1, num2);
                 operacaoText.setText(resultado);
                 resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "-" + String.valueOf(num2) + " = " + resultado + " ");
-                saveData.add(resultadoText.getText().toString());
+                //saveData.add(resultadoText.getText().toString());
+                salvarDB(resultadoText.getText().toString());
                 break;
 
             case 3:
                 resultado = operacoes.divisao(num1, num2);
                 operacaoText.setText(resultado);
                 resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "/" + String.valueOf(num2) + " = " + resultado + " ");
-                saveData.add(resultadoText.getText().toString());
+                //saveData.add(resultadoText.getText().toString());
+                salvarDB(resultadoText.getText().toString());
                 break;
 
             case 4:
                 resultado = operacoes.multiplicacao(num1, num2);
                 operacaoText.setText(resultado);
                 resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "*" + String.valueOf(num2) + " = " + resultado + " ");
-                saveData.add(resultadoText.getText().toString());
+                //saveData.add(resultadoText.getText().toString());
+                salvarDB(resultadoText.getText().toString());
                 break;
 
             default:

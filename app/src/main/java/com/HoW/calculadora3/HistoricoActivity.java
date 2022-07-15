@@ -1,45 +1,59 @@
 package com.HoW.calculadora3;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.EditText;
+import android.view.View;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.HoW.calculadora3.ResultadoRVAdapter;
+import com.HoW.calculadora3.ViewModelResultado;
+import com.HoW.calculadora3.ResultadoModel;
 
-
+import java.util.List;
 
 public class HistoricoActivity extends AppCompatActivity {
 
-
-    EditText historico;
-    MainActivity main;
+    // criando as variaveis do Recycler View
+    private RecyclerView resultadoRV;
+    private ViewModelResultado viewModelResultado;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle savedInstaceState){
+        super.onCreate(savedInstaceState);
         setContentView(R.layout.activity_historico);
 
-        main = new MainActivity();
-        vincularCampo();
 
+        // inicializando variaveis
+        resultadoRV = findViewById(R.id.idRVResultado);
 
-        listarDadosHistorico();
-    }
+        // layout manager para o adapter
+        resultadoRV.setLayoutManager(new LinearLayoutManager(this));
+        resultadoRV.setHasFixedSize(true);
 
-    private void vincularCampo()
-    {
-        historico = findViewById(R.id.listagemHistorico);
-    }
+        //inicializa adapter para o Recycler View
+        final ResultadoRVAdapter adapter = new ResultadoRVAdapter();
 
-    private void listarDadosHistorico ()
-    {
+        resultadoRV.setAdapter(adapter);
 
-        if (main.saveData.isEmpty()) {
-            historico.setText("Vazio");
-        }else{
-            for (int i=0;i < main.saveData.size();i++) {
-                String a = main.saveData.get(i);
-                historico.setText(historico.getText() + "\n\r" + a);
+        // passando os dados para o View Model
+        viewModelResultado = ViewModelProviders.of(this).get(ViewModelResultado.class);
+
+        // pega todos os registros para o View Model
+        viewModelResultado.getTodosResultados().observe(this, new Observer<List<ResultadoModel>>() {
+            @Override
+            public void onChanged(List<ResultadoModel> resultadoModels) {
+                adapter.submitList(resultadoModels);
             }
-        }
+        });
     }
 }

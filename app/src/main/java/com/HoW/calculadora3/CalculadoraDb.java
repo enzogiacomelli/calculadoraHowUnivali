@@ -4,28 +4,24 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import androidx.annotation.NonNull;
-import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.HoW.calculadora3.calculadoraModel;
-import com.HoW.calculadora3.resultadoDao;
+@androidx.room.Database(entities = {ResultadoModel.class}, version = 1)
+public abstract class CalculadoraDb extends RoomDatabase {
 
-@Database(entities = {calculadoraModel.class}, version = 1)
-public abstract class database extends RoomDatabase {
+    private static CalculadoraDb instance;
 
-    private static database instance;
-
-    public abstract resultadoDao resultadoDao();
+    public abstract ResultadoDao resultadoDao();
 
     // metodo para instanciar a base de dados
-    public static synchronized database getInstance(Context context){
+    public static synchronized CalculadoraDb getInstance(Context context){
         // verifica se ja esta criado
         if (instance == null){
             // criando base de dados passando a classe calculadora
             instance = Room.databaseBuilder(context.getApplicationContext(),
-                            database.class,"calculadora database")
+                            CalculadoraDb.class,"Calculadora Database ")
                     // informa room database para destruir (e recriar) a base de dados em migracoes
                     .fallbackToDestructiveMigration()
                     .addCallback(roomCallback)
@@ -49,9 +45,9 @@ public abstract class database extends RoomDatabase {
     // metodo para executar tarefas assincronas em segundo plano
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void>{
         @Deprecated
-        PopulateDbAsyncTask(database instace){
+        PopulateDbAsyncTask(CalculadoraDb instace){
             // Informando os DAOs das entidades
-            resultadoDao instrutorDao = instance.resultadoDao();
+            ResultadoDao instrutorDao = instance.resultadoDao();
         }
         @Override
         protected Void doInBackground(Void... voids){

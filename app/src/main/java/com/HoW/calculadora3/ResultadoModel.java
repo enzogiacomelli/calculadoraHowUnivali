@@ -12,13 +12,13 @@ import java.util.Date;
 
 
 @Entity(tableName = "tbResultados")
-public class calculadoraModel {
+public class ResultadoModel {
 
     @PrimaryKey(autoGenerate = true)
     private int coResultado;
     private String deResultado;
 
-    public calculadoraModel(String deResultado){
+    public ResultadoModel(String deResultado){
         this.deResultado = deResultado;
     }
 
