@@ -83,6 +83,10 @@ public class MainActivity extends AppCompatActivity {
         historicoBtn = findViewById(R.id.historicoBtn);
     }
 
+    private void salvarDB(String operacao){
+
+
+    }
 
 
 
