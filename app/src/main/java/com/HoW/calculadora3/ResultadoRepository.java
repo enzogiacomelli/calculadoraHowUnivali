@@ -3,6 +3,7 @@ package com.HoW.calculadora3;
 import android.app.Application;
 import android.os.AsyncTask;
 import androidx.lifecycle.LiveData;
+import com.HoW.calculadora3.ResultadoDao;
 
 import java.util.List;
 

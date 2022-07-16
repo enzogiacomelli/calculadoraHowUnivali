@@ -1,23 +1,15 @@
 package com.HoW.calculadora3;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
+
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.ItemTouchHelper;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.HoW.calculadora3.ResultadoRVAdapter;
-import com.HoW.calculadora3.ViewModelResultado;
-import com.HoW.calculadora3.ResultadoModel;
 
 import java.util.List;
 
@@ -27,13 +19,15 @@ public class HistoricoActivity extends AppCompatActivity {
     private RecyclerView resultadoRV;
     private ViewModelResultado viewModelResultado;
 
+//    private static final int ADD_ALUNO_REQUEST = 1;
+//    private static final int EDIT_ALUNO_REQUEST = 2;
+
     @Override
     protected void onCreate(Bundle savedInstaceState){
         super.onCreate(savedInstaceState);
         setContentView(R.layout.activity_historico);
 
-
-        // inicializando variaveis
+                // inicializando variaveis
         resultadoRV = findViewById(R.id.idRVResultado);
 
         // layout manager para o adapter
@@ -48,6 +42,7 @@ public class HistoricoActivity extends AppCompatActivity {
         // passando os dados para o View Model
         viewModelResultado = ViewModelProviders.of(this).get(ViewModelResultado.class);
 
+
         // pega todos os registros para o View Model
         viewModelResultado.getTodosResultados().observe(this, new Observer<List<ResultadoModel>>() {
             @Override
@@ -55,5 +50,6 @@ public class HistoricoActivity extends AppCompatActivity {
                 adapter.submitList(resultadoModels);
             }
         });
+
     }
 }

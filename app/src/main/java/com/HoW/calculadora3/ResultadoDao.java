@@ -1,16 +1,15 @@
 package com.HoW.calculadora3;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.HoW.calculadora3.ResultadoModel;
-
 import java.util.List;
 
-@androidx.room.Dao
+@Dao
 public interface ResultadoDao {
     //Resultado
     @Insert
@@ -25,7 +24,7 @@ public interface ResultadoDao {
     @Query("DELETE FROM tbResultados")
     void deleteTodosResultados();
 
-    @Query("SELECT * FROM tbResultados ORDER BY CORESULTADO ASC")
+    @Query("SELECT * FROM TBRESULTADOS ORDER BY CORESULTADO DESC")
     LiveData<List<ResultadoModel>> getTodosResultados();
 
 }

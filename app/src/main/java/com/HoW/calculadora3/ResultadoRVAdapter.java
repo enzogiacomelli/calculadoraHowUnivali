@@ -11,9 +11,6 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.HoW.calculadora3.R;
-import com.HoW.calculadora3.ResultadoModel;
-
 
 public class ResultadoRVAdapter extends ListAdapter<ResultadoModel, ResultadoRVAdapter.ViewHolder>{
 

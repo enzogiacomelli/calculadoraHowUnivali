@@ -3,13 +3,6 @@ package com.HoW.calculadora3;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-
 
 @Entity(tableName = "tbResultados")
 public class ResultadoModel {

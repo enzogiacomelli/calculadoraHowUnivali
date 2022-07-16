@@ -4,11 +4,12 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import androidx.annotation.NonNull;
+import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@androidx.room.Database(entities = {ResultadoModel.class}, version = 1)
+@Database(entities = {ResultadoModel.class}, version = 1, exportSchema = true)
 public abstract class CalculadoraDb extends RoomDatabase {
 
     private static CalculadoraDb instance;
@@ -45,9 +46,9 @@ public abstract class CalculadoraDb extends RoomDatabase {
     // metodo para executar tarefas assincronas em segundo plano
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void>{
         @Deprecated
-        PopulateDbAsyncTask(CalculadoraDb instace){
+        PopulateDbAsyncTask(CalculadoraDb instance){
             // Informando os DAOs das entidades
-            ResultadoDao instrutorDao = instance.resultadoDao();
+            ResultadoDao resultadoDao = instance.resultadoDao();
         }
         @Override
         protected Void doInBackground(Void... voids){
