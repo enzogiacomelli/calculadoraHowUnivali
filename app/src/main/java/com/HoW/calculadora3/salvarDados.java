@@ -22,13 +22,16 @@ import java.util.Arrays;
 public class salvarDados extends Activity {
     String escrita = "aa";
     String leitura;
-    //File file = new File("file");
 
+    String fileName = "arquivo.txt";
+    File dir = getBaseContext().getFilesDir();
+    File file = new File(dir, fileName);
 
     public void save() {
         FileOutputStream fos;
         try {
-            fos = this.openFileOutput("file", MODE_APPEND); //abre ou cria arquivo com nome
+            file.createNewFile();
+            fos = this.openFileOutput(fileName, MODE_APPEND); //abre ou cria arquivo com nome
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.write(escrita.getBytes());
             oos.close();
