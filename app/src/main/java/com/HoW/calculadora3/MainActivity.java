@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         vincularComponentes();
 
         operacoes Operacoes = new operacoes();
-        salvarDados salvarDados = new salvarDados();
+        //salvarDados salvarDados = new salvarDados();
 
 
         historicoBtn.setOnClickListener((new View.OnClickListener() {
@@ -129,7 +129,8 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return;
         }
-
+        salvarDados salvarDados = new salvarDados();
+        salvarDados.save();
         num1 = Double.parseDouble(resultado);//define o resultado como o primeiro valor da proxima operação e limpa o resto.
         num2 = 0;
         operador = 5;

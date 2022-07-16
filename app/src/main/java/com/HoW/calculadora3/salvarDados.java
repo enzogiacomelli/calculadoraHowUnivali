@@ -1,36 +1,51 @@
 package com.HoW.calculadora3;
 
+import android.Manifest;
+import android.app.Activity;
+import android.widget.Toast;
+
+import androidx.core.app.ActivityCompat;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 
+public class salvarDados extends Activity {
+    private int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
+    String aa = "aa";
 
+    public void save() {
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, EXTERNAL_STORAGE_PERMISSION_CODE);
 
-public class salvarDados {
-
-    public static void save() {
-        String string1 = "Hey you";
-
-        FileOutputStream fos;
-
+        File file = new File("C:/Users/egiac/AndroidStudioProjects/calculadora3/dados/historico.txt");
+        FileOutputStream fileOutputStream = null;
         try {
-            fos = new FileOutputStream("C:/Users/egiac/AndroidStudioProjects/calculadora3/dados/historico.txt", true);
-
-            FileWriter fWriter;
-
-            try {
-                fWriter = new FileWriter(fos.getFD());
-                fWriter.write("hi");
-                fWriter.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                fos.getFD().sync();
-                fos.close();
-            }
+            fileOutputStream = new FileOutputStream(file);
+            fileOutputStream.write(aa.getBytes());
+            Toast.makeText(this, "Done" + file.getAbsolutePath(), Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            if (fileOutputStream != null) {
+                try {
+                    fileOutputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
         }
+
+
+        /*@Override
+        public void onPointerCaptureChanged ( boolean hasCapture){
+            super.onPointerCaptureChanged(hasCapture);
+        }*/
     }
 }
 
