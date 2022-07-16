@@ -1,14 +1,20 @@
 package com.HoW.calculadora3;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 
 
 
-
 public class salvarDados {
 
-    public static void save() {
+    public static void save()
+    {
+
+    }
+}
+
+   /* public static void save() {
         String string1 = "Hey you";
 
         FileOutputStream fos;
@@ -32,7 +38,7 @@ public class salvarDados {
             e.printStackTrace();
         }
     }
-}
+}*/
 
 
 

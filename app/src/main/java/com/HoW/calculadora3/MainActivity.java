@@ -5,7 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,19 +42,67 @@ public class MainActivity extends AppCompatActivity {
     Button num8Btn;
     Button num9Btn;
     Button historicoBtn;
-    public static List<String> saveData = new ArrayList<>();
+    //public static List<String> saveData = new ArrayList<>();
 
+    public static final String EXTRA_COD_RESULTADO = "com.gtappdevelopers.gfgroomdatabase.EXTRA_ID";
+    public static final String EXTRA_DE_RESULTADO = "com.gtappdevelopers.gfgroomdatabase.EXTRA_COURSE_NAME";
+    private ViewModelResultado viewModelResultado;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-
         vincularComponentes();
 
-        operacoes Operacoes = new operacoes();
-        salvarDados salvarDados = new salvarDados();
+        viewModelResultado = ViewModelProviders.of(this).get(ViewModelResultado.class);
+
+        resultadoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                    resultadoText.setText("");
+                    String resultado = "";
+                    @NonNull
+                    String deResultado = "";
+                    switch (operador){
+                        case 1:
+                            resultado = operacoes.soma(num1, num2);
+                            operacaoText.setText(resultado);
+                            resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "+" + String.valueOf(num2) + " = " + resultado + " ");
+                            break;
+                        case 2:
+                            resultado = operacoes.subtracao(num1, num2);
+                            operacaoText.setText(resultado);
+                            resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "-" + String.valueOf(num2) + " = " + resultado + " ");
+                            break;
+
+                        case 3:
+                            resultado = operacoes.divisao(num1, num2);
+                            operacaoText.setText(resultado);
+                            resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "/" + String.valueOf(num2) + " = " + resultado + " ");
+                            break;
+
+                        case 4:
+                            resultado = operacoes.multiplicacao(num1, num2);
+                            operacaoText.setText(resultado);
+                            resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "*" + String.valueOf(num2) + " = " + resultado + " ");
+                            break;
+
+                        default:
+                            return;
+                    }
+
+                    num1 = Double.parseDouble(resultado);//define o resultado como o primeiro valor da proxima operação e limpa o resto.
+                    num2 = 0;
+                    operador = 5;
+                    decimal = false;
+
+                    deResultado = resultadoText.getText().toString();
+
+                    salvarDB(deResultado);
+            }
+        });
 
 
         historicoBtn.setOnClickListener((new View.OnClickListener() {
@@ -58,6 +112,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         }));
+
+    }
+
+    //metodo para salvar os dados recebidos da activity
+    private void salvarDB(String deResultado){
+        ResultadoModel model = new ResultadoModel(deResultado);
+        viewModelResultado.insert(model);
     }
 
     private void vincularComponentes()//identifica os elementos da interface com as variaveis
@@ -83,9 +144,6 @@ public class MainActivity extends AppCompatActivity {
         historicoBtn = findViewById(R.id.historicoBtn);
     }
 
-
-
-
     public void clickLimparBtn(View view){
         operacaoText.setText("");
         resultadoText.setText("");
@@ -94,47 +152,6 @@ public class MainActivity extends AppCompatActivity {
         operador = 0;
         decimal = false;
     }//botao para "resetar" a calculadora
-
-    public void clickIgualBtn(View view){
-        resultadoText.setText("");
-        String resultado = "";
-        switch (operador){
-            case 1:
-                resultado = operacoes.soma(num1, num2);
-                operacaoText.setText(resultado);
-                resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "+" + String.valueOf(num2) + " = " + resultado + " ");
-                saveData.add(resultadoText.getText().toString());
-                break;
-            case 2:
-                resultado = operacoes.subtracao(num1, num2);
-                operacaoText.setText(resultado);
-                resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "-" + String.valueOf(num2) + " = " + resultado + " ");
-                saveData.add(resultadoText.getText().toString());
-                break;
-
-            case 3:
-                resultado = operacoes.divisao(num1, num2);
-                operacaoText.setText(resultado);
-                resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "/" + String.valueOf(num2) + " = " + resultado + " ");
-                saveData.add(resultadoText.getText().toString());
-                break;
-
-            case 4:
-                resultado = operacoes.multiplicacao(num1, num2);
-                operacaoText.setText(resultado);
-                resultadoText.setText(resultadoText.getText() + String.valueOf(num1) + "*" + String.valueOf(num2) + " = " + resultado + " ");
-                saveData.add(resultadoText.getText().toString());
-                break;
-
-            default:
-                return;
-        }
-
-        num1 = Double.parseDouble(resultado);//define o resultado como o primeiro valor da proxima operação e limpa o resto.
-        num2 = 0;
-        operador = 5;
-        decimal = false;
-    }
 
     public void clickPontoBtn(View view){
         if(!decimal) {
@@ -459,4 +476,5 @@ public class MainActivity extends AppCompatActivity {
             decimal = false;
         }
     }
+
 }
